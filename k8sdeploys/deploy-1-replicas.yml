@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: czwr-deploy-from-manifest-with-replicas
+  labels:
+    app: my-deploy
+    env: prod
+    owner: Czwr
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: cia
+  template:
+    metadata:
+      labels:
+        project: cia
+    spec:
+      containers:
+        - name: kgb-web
+          image: adv4000/k8sphp:version2
+          ports:
+            - containerPort: 80           

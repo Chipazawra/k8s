@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: czwr-deploy-from-manifest
+  labels:
+    app: my-deploy
+spec:
+  selector:
+    matchLabels:
+      project: kgb
+  template:
+    metadata:
+      labels:
+        project: kgb
+    spec:
+      containers:
+        - name: kgb-web
+          image: adv4000/k8sphp:version1
+          ports:
+            - containerPort: 80           
